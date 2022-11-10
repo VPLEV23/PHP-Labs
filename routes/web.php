@@ -3,6 +3,16 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 
+use Telegram\Bot\Laravel\Facades\Telegram;
+
+
+
+$response = Telegram::getMe();
+$botId = $response->getId();
+$firstName = $response->getFirstName();
+$username = $response->getUsername();
+echo $botId . '<br />' . $firstName . '<br />' . $username;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
