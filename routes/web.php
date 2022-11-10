@@ -35,4 +35,8 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::post('/1LjIYdsPJaIoKfRpDnnb0YfOVl6ACSAQduIMfK1gyihhMDUHMDmPnm4FQhXUtsuE/webhook', function () {
+    $update = Telegram::commandsHandler(true);
+});
+
 require __DIR__.'/auth.php';
