@@ -6,7 +6,7 @@ use Telegram\Bot\Actions;
 
 use Telegram\Bot\Commands\Command;
 
-class StartCommand extends Command
+class GenerateCommand extends Command
 
 {
 
@@ -16,7 +16,7 @@ class StartCommand extends Command
 
      */
 
-    protected $name = "start";
+    protected $name = "generate";
 
     /**
 
@@ -24,7 +24,7 @@ class StartCommand extends Command
 
      */
 
-    protected $description = "Start Command to get you started";
+    protected $description = "Generate Command";
 
     /**
 

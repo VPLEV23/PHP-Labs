@@ -3,15 +3,21 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 
-use Telegram\Bot\Laravel\Facades\Telegram;
+use Telegram\Bot\Api;
 
+Route::get('/bot', function () {
 
+    $response = Telegram::getMe();
 
-$response = Telegram::getMe();
-$botId = $response->getId();
-$firstName = $response->getFirstName();
-$username = $response->getUsername();
-echo $botId . '<br />' . $firstName . '<br />' . $username;
+    $botId = $response->getId();
+
+    $firstName = $response->getFirstName();
+
+    $username = $response->getUsername();
+
+    echo $botId . '<br />' . $firstName . '<br />' . $username;
+
+});
 
 /*
 |--------------------------------------------------------------------------
@@ -37,6 +43,8 @@ Route::get('/dashboard', function () {
 
 Route::post('/1LjIYdsPJaIoKfRpDnnb0YfOVl6ACSAQduIMfK1gyihhMDUHMDmPnm4FQhXUtsuE/webhook', function () {
     $update = Telegram::commandsHandler(true);
+
+    return 'ok';
 });
 
 require __DIR__.'/auth.php';
