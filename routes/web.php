@@ -3,6 +3,22 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 
+use Telegram\Bot\Api;
+
+Route::get('/bot', function () {
+
+    $response = Telegram::getMe();
+
+    $botId = $response->getId();
+
+    $firstName = $response->getFirstName();
+
+    $username = $response->getUsername();
+
+    echo $botId . '<br />' . $firstName . '<br />' . $username;
+
+});
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,5 +40,11 @@ Route::resource('users', UserController::class)
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::post('/1LjIYdsPJaIoKfRpDnnb0YfOVl6ACSAQduIMfK1gyihhMDUHMDmPnm4FQhXUtsuE/webhook', function () {
+    $update = Telegram::commandsHandler(true);
+
+    return 'ok';
+});
 
 require __DIR__.'/auth.php';
